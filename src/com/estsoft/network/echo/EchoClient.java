@@ -1,4 +1,4 @@
-package com.eastsoft.network.echo;
+package com.estsoft.network.echo;
 
 import java.io.BufferedReader;
 import java.io.IOException;
