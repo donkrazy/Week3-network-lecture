@@ -21,28 +21,22 @@ public class TCPServer {
 			// 2. binding
 			InetAddress inetAddress = InetAddress.getLocalHost();
 			String localhostAddress = inetAddress.getHostAddress();
-			serverSocket.bind(new InetSocketAddress(localhostAddress, PORT ));
+			serverSocket.bind( new InetSocketAddress( localhostAddress, PORT ) );
 			System.out.println( "[server] binding " + localhostAddress + ":" + PORT );
 			
 			//3. accpet 연결 요청 기다림
 			Socket socket = serverSocket.accept(); //blocking
 			
 			//4. 연결 성공
-			InetSocketAddress remoteAddress = 
-				(InetSocketAddress)socket.getRemoteSocketAddress();
-			String remoteHostAddress = 
-				remoteAddress.getAddress().getHostAddress();
+			InetSocketAddress remoteAddress = (InetSocketAddress)socket.getRemoteSocketAddress();
+			String remoteHostAddress = remoteAddress.getAddress().getHostAddress();
 			int remoteHostPort = remoteAddress.getPort();
-			System.out.println( 
-				"[server] 연결됨  from " + 
-				remoteHostAddress + ":" + 
-				remoteHostPort  );
+			System.out.println( "[server] 연결됨  from " + remoteHostAddress + ":" + remoteHostPort );
 			
 			//5. IOStream 받아 오기
 			try {
 				InputStream inputStream = socket.getInputStream();
 				OutputStream outputStream = socket.getOutputStream();
-	
 				while( true ) {
 					//6. 데이터 읽기
 					byte[] buffer = new byte[256];
@@ -53,6 +47,7 @@ public class TCPServer {
 					}
 					String data = new String( buffer, 0, readByteCount, "utf-8" );
 					System.out.println( "[server] received : " + data );
+					
 					//7. 쓰기
 					outputStream.write( data.getBytes( "UTF-8" ) );
 				}
@@ -69,7 +64,7 @@ public class TCPServer {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			// 데이터 socket 닿기
+			// 자원정리
 			try {
 				if( serverSocket != null && serverSocket.isClosed() == false ) {
 					serverSocket.close();
@@ -77,13 +72,6 @@ public class TCPServer {
 			} catch( IOException ex ) {
 				ex.printStackTrace();
 			}
-			
-			
 		}
-		
-		
-		
-		
 	}
-
 }
