@@ -10,39 +10,32 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class EchoClient {
-	private static final String SERVER_IP = "192.168.1.15";
+//	private static final String SERVER_IP = "192.168.1.15";
+	private static final String SERVER_IP = "192.168.56.1";
 	private static final int SERVER_PORT = 5050;
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner( System.in );
 		Socket socket = null;
 		try {
 			socket = new Socket();
-			socket.connect( new InetSocketAddress(SERVER_IP, SERVER_PORT) );
+			socket.connect( new InetSocketAddress( SERVER_IP, SERVER_PORT ) );
 			
-			BufferedReader br = new BufferedReader( 
-				new InputStreamReader( 
-					socket.getInputStream(), 
-					"UTF-8") );
-			
-			PrintWriter pw = new PrintWriter( 
-				new OutputStreamWriter(
-					socket.getOutputStream(),
-					"UTF-8"
-				));
+			BufferedReader br = new BufferedReader( new InputStreamReader( socket.getInputStream(), "UTF-8" ) );
+			PrintWriter pw = new PrintWriter( new OutputStreamWriter( socket.getOutputStream(), "UTF-8" ), true );
 			
 			while( true ) {
-				System.out.print( ">>" );
+				System.out.print( ">> " );
 				String message = scanner.nextLine();
 				if( "exit".equals( message ) ) {
 					break;
 				}
 				
-				pw.print( message );
-				//outputStream.write( (message + "\n").getBytes() );
+				pw.println( message );
+				//socket.getOutputStream().write( (message + "\n").getBytes() );
 				
 				String data = null;
 				if( ( data = br.readLine()) != null ) {
-					System.out.println( data );
+					System.out.println( "<< " + data );
 				}
 			}
 		}catch(IOException ex) {
