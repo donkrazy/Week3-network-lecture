@@ -26,7 +26,7 @@ public class RequestHandler extends Thread {
 
 			// logging Remote Host IP Address & Port
 			InetSocketAddress inetSocketAddress = ( InetSocketAddress )socket.getRemoteSocketAddress();
-			SimpleHttpServer.consolLog( "connected from " + inetSocketAddress.getHostName() + ":" + inetSocketAddress.getPort() );
+			consoleLog( "connected from " + inetSocketAddress.getHostName() + ":" + inetSocketAddress.getPort() );
 
 			// 예제 응답입니다.
 			// 서버 시작과 테스트를 마친 후, 주석 처리 합니다.
@@ -36,7 +36,7 @@ public class RequestHandler extends Thread {
 			outputStream.write( "<h1>이 페이지가 잘 보이면 실습과제 SimpleHttpServer를 시작할 준비가 된 것입니다.</h1>".getBytes( "UTF-8" ) );
 
 		} catch( Exception ex ) {
-			SimpleHttpServer.consolLog( "error:" + ex );
+			consoleLog( "error:" + ex );
 		} finally {
 			// clean-up
 			try{
@@ -45,8 +45,12 @@ public class RequestHandler extends Thread {
 				}
 				
 			} catch( IOException ex ) {
-				SimpleHttpServer.consolLog( "error:" + ex );
+				consoleLog( "error:" + ex );
 			}
 		}			
 	}
+	
+	public void consoleLog(String message) {
+		System.out.println("[RequestHandler#" + Thread.currentThread().getId() + "] " + message);
+	}	
 }

@@ -7,7 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class SimpleHttpServer {
-	private static final int PORT = 8080;
+	private static final int PORT = 8088;
 
 	public static void main(String[] args) {
 
@@ -45,7 +45,7 @@ public class SimpleHttpServer {
 	}
 
 	public static void consolLog(String message) {
-		System.out.println("[HttpServer] " + message);
+		System.out.println("[HttpServer] " + Thread.currentThread().getId() + message);
 	}
 
 }
