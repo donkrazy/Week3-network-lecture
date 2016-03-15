@@ -29,7 +29,8 @@ public class TCPServer {
 			
 			//4. 연결 성공
 			InetSocketAddress remoteAddress = (InetSocketAddress)socket.getRemoteSocketAddress();
-			String remoteHostAddress = remoteAddress.getAddress().getHostAddress();
+			//String remoteHostAddress = remoteAddress.getAddress().getHostAddress();
+			String remoteHostAddress = remoteAddress.getHostName();
 			int remoteHostPort = remoteAddress.getPort();
 			System.out.println( "[server] 연결됨  from " + remoteHostAddress + ":" + remoteHostPort );
 			
@@ -42,6 +43,7 @@ public class TCPServer {
 					byte[] buffer = new byte[256];
 					int readByteCount = inputStream.read( buffer ); //blocking
 					if( readByteCount <= -1 ) {
+						//정상종료
 						System.out.println( "[server] closed by client");
 						break;
 					}
