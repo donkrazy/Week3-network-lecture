@@ -16,7 +16,7 @@ public class SimpleHttpServer {
 		try {
 			// 1. Create Server Socket
 			serverSocket = new ServerSocket();
-
+			   
 			// 2. Bind
 			String localhost = InetAddress.getLocalHost().getHostAddress();
 			serverSocket.bind(new InetSocketAddress(localhost, PORT));
@@ -45,7 +45,6 @@ public class SimpleHttpServer {
 	}
 
 	public static void consolLog(String message) {
-		System.out.println("[HttpServer] " + Thread.currentThread().getId() + message);
+		System.out.println("[HttpServer#" + Thread.currentThread().getId()  + "] " + message);
 	}
-
 }
