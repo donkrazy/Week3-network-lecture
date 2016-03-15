@@ -90,7 +90,6 @@ public class RequestHandler extends Thread {
 		outputStream.write( "\r\n".getBytes() );
 		outputStream.write( body );
 	}
-	
 	private void response404Error( OutputStream outputStream,  String protocol ) throws IOException {
 		File file = new File ( "./webapp/error/404.html" );
 		byte[] body = Files.readAllBytes( file.toPath() );
@@ -100,7 +99,6 @@ public class RequestHandler extends Thread {
 		outputStream.write( "\r\n".getBytes() );
 		outputStream.write( body );		
 	}
-
 	private void response400Error( OutputStream outputStream,  String protocol ) throws IOException {
 		File file = new File ( "./webapp/error/400.html" );
 		byte[] body = Files.readAllBytes( file.toPath() );
