@@ -16,7 +16,6 @@ public class SimpleHttpServer {
 		try {
 			// 1. Create Server Socket
 			serverSocket = new ServerSocket();
-<<<<<<< HEAD
 			   
 			// 2. Bind
 			String localhost = InetAddress.getLocalHost().getHostAddress();
@@ -48,38 +47,4 @@ public class SimpleHttpServer {
 	public static void consolLog(String message) {
 		System.out.println("[HttpServer#" + Thread.currentThread().getId()  + "] " + message);
 	}
-=======
-
-			// 2. Bind
-			String localhost = InetAddress.getLocalHost().getHostAddress();
-			serverSocket.bind(new InetSocketAddress(localhost, PORT));
-			consolLog("bind " + localhost + ":" + PORT);
-
-			while (true) {
-				// 3. Wait for connecting ( accept )
-				Socket socket = serverSocket.accept();
-
-				// 4. Delegate Processing Request
-				new RequestHandler(socket).start();
-			}
-
-		} catch (IOException ex) {
-			consolLog("error:" + ex);
-		} finally {
-			// 5. 자원정리
-			try {
-				if (serverSocket != null && serverSocket.isClosed() == false) {
-					serverSocket.close();
-				}
-			} catch (IOException ex) {
-				consolLog("error:" + ex);
-			}
-		}
-	}
-
-	public static void consolLog(String message) {
-		System.out.println("[HttpServer] " + message);
-	}
-
->>>>>>> branch 'master' of https://github.com/kickscar/network.git
 }
