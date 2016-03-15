@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketException;
 
 public class TCPClient {
 	private static final String SERVER_IP = "192.168.1.15";
@@ -37,6 +38,8 @@ public class TCPClient {
 			data = new String( buffer, 0, readByteCount, "UTF-8" );
 			System.out.println( "[client] received :" + data );
 		
+		} catch(SocketException e ) {
+			System.out.println( "[client] 비정상적으로 클라이언트가 종료 되었습니다." );
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {

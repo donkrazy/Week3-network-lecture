@@ -10,11 +10,10 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class EchoClient {
-//	private static final String SERVER_IP = "192.168.1.15";
-	private static final String SERVER_IP = "192.168.56.1";
+	private static final String SERVER_IP = "192.168.1.15";
 	private static final int SERVER_PORT = 5050;
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner( System.in );
+		Scanner scanner = new Scanner(  System.in  );
 		Socket socket = null;
 		try {
 			socket = new Socket();
