@@ -68,13 +68,7 @@ public class RequestHandler extends Thread {
 			}
 		}			
 	}
-<<<<<<< HEAD
-	
-	public void consoleLog(String message) {
-		System.out.println("[RequestHandler#" + Thread.currentThread().getId() + "] " + message);
-	}	
-}
-=======
+
 
 	private void responseStaticResource( OutputStream outputStream, String url, String protocol ) 
 		throws IOException {
