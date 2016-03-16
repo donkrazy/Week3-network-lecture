@@ -12,20 +12,21 @@ public class UDPEchoServer {
 		try {
 			socket = new DatagramSocket( PORT );
 			
-			DatagramPacket receivePacket = new DatagramPacket( new byte[ BUFFER_SIZE ], BUFFER_SIZE );
-			socket.receive( receivePacket );
-			
-			String message = new String( receivePacket.getData(), 0, receivePacket.getLength(), "UTF-8" );
-			System.out.println( message );
-			
-			byte[] sendData = message.getBytes( "UTF-8" );
-			DatagramPacket sendPacket = new DatagramPacket(
-					sendData, 
-					sendData.length,
-					receivePacket.getSocketAddress()
-					);
-			socket.send( sendPacket );
-			
+			while( true ) {
+				DatagramPacket receivePacket = new DatagramPacket( new byte[ BUFFER_SIZE ], BUFFER_SIZE );
+				socket.receive( receivePacket );
+				
+				String message = new String( receivePacket.getData(), 0, receivePacket.getLength(), "UTF-8" );
+				System.out.println( message );
+				
+				byte[] sendData = message.getBytes( "UTF-8" );
+				DatagramPacket sendPacket = new DatagramPacket(
+						sendData, 
+						sendData.length,
+						receivePacket.getSocketAddress()
+						);
+				socket.send( sendPacket );
+			}
 		} catch( IOException ex ) {
 			ex.printStackTrace();
 		} finally {

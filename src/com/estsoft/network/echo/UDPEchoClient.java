@@ -17,7 +17,8 @@ public class UDPEchoClient {
 			socket = new DatagramSocket();
 			
 			// 전송
-			String message = "hello world";
+//			String message = "hello world";
+			String message = "";
 			byte[] sendData = message.getBytes( "UTF-8" );
 			DatagramPacket sendPacket = 
 					new DatagramPacket(  
