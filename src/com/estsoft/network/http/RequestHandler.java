@@ -70,6 +70,7 @@ public class RequestHandler extends Thread {
 	}
 
 
+
 	private void responseStaticResource( OutputStream outputStream, String url, String protocol ) 
 		throws IOException {
 		if( "/".equals( url ) ) {
