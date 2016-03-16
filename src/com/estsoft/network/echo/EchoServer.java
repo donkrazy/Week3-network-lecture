@@ -15,7 +15,10 @@ public class EchoServer {
 		try {
 			// 1. 서버 소켓 생성
 			serverSocket = new ServerSocket();
-
+			
+			//Time-wait 상태에서 서버 재실행이 가능하게 끔 함
+			serverSocket.setReuseAddress( true );
+			
 			// 2. binding
 			InetAddress inetAddress = InetAddress.getLocalHost();
 			String localhostAddress = inetAddress.getHostAddress();
