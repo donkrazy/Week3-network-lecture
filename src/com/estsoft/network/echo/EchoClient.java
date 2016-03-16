@@ -40,7 +40,7 @@ public class EchoClient {
 					System.out.println( "<< " + data );
 				}
 			}
-		}catch(IOException ex) {
+		} catch(IOException ex) {
 			ex.printStackTrace();
 		} finally {
 			scanner.close();
