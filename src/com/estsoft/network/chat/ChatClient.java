@@ -11,7 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class ChatClient {
-	private static final String SERVER_ADDRESS = "192.168.56.1";
+	private static final String SERVER_ADDRESS = "192.168.1.15";
 	private static final int SERVER_PORT = 9090;
 	
 	public static void main(String[] args) {

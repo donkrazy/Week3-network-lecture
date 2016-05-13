@@ -17,6 +17,7 @@ public class UDPTimeServer {
 			while( true ) {
 				DatagramPacket receivePacket = new DatagramPacket( new byte[ BUFFER_SIZE ], BUFFER_SIZE );
 				socket.receive( receivePacket );
+				
 
 				// 송신
 				String date = new SimpleDateFormat( "yyyy-MM-dd hh:mm:ss" ).format( new Date() );
